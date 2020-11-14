@@ -5,12 +5,14 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Header from "./components/Header";
 import Title from "./components/Title";
+import PhotosWrapper from "./components/PhotosWrapper";
 
 ReactDOM.render(
   <React.StrictMode>
     {" "}
     <Header />
     <Title />
+    <PhotosWrapper />
   </React.StrictMode>,
   document.getElementById("root")
 );
