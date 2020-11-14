@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./css/index.css";
+
+import "./index.css";
+import "./styled_components/header";
 import reportWebVitals from "./reportWebVitals";
+import Header from "./components/Header";
 
 ReactDOM.render(
-  <React.StrictMode></React.StrictMode>,
+  <React.StrictMode>
+    {" "}
+    <Header />
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
