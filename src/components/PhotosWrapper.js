@@ -18,7 +18,7 @@ export default function PhotosWrapper(props) {
       <FilterContainer>
         <FilterForm>
           <FilterActions>
-            <FilterButton>Clear</FilterButton>
+            <FilterButton white>Clear</FilterButton>
             <FilterButton>Apply</FilterButton>
           </FilterActions>
         </FilterForm>

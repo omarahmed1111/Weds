@@ -35,8 +35,8 @@ const FilterButton = styled.button`
   cursor: pointer;
   font-family: "Lato", sans-serif;
   line-height: inherit;
-  background-color: #000;
-  color: #fff;
+  background-color: ${(props) => (props.white ? "white" : "black")};
+  color: ${(props) => (props.white ? "black" : "white")};
   vertical-align: middle;
   padding: 0;
   border: solid 1px #000;
