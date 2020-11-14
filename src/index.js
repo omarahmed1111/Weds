@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import Header from "./components/Header";
 import Title from "./components/Title";
 import PhotosWrapper from "./components/PhotosWrapper";
+import Footer from "./components/Footer";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Header />
     <Title />
     <PhotosWrapper />
+    <Footer />
   </React.StrictMode>,
   document.getElementById("root")
 );

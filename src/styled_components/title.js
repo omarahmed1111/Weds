@@ -18,7 +18,7 @@ const TitleHeading = styled.h3`
   display: inline-block;
   font-size: 18px;
   font-weight: 900;
-  color: #010101;
+  color: ${(props) => (props.white ? "white" : "black")};
   margin-right: 1rem;
 `;
 
