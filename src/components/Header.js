@@ -6,6 +6,7 @@ import {
   HeaderSection,
   DropDown,
   StyledHeader,
+  HeaderImg,
 } from "../styled_components/header";
 
 export default function Header(props) {
@@ -32,6 +33,25 @@ export default function Header(props) {
           </HeaderListItem>
           <HeaderListItem>
             <HeaderLink>The Wedding</HeaderLink>
+          </HeaderListItem>
+        </HeaderList>
+      </HeaderSection>
+
+      <HeaderImg
+        src="https://weds360.com/assets/logo-230bd37b1825e38607ce1c61b6d90db4b882249ec903fba33728119249a9036f.png"
+        alt="Logo"
+      ></HeaderImg>
+
+      <HeaderSection>
+        <HeaderList>
+          <HeaderListItem>
+            <HeaderLink>Vendors</HeaderLink>
+          </HeaderListItem>
+          <HeaderListItem>
+            <HeaderLink>Gallery</HeaderLink>
+          </HeaderListItem>
+          <HeaderListItem>
+            <HeaderLink>Ideas & More</HeaderLink>
           </HeaderListItem>
         </HeaderList>
       </HeaderSection>

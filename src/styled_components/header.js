@@ -27,13 +27,15 @@ const HeaderList = styled.ul`
 const HeaderListItem = styled.li`
   list-style-type: none;
   position: relative;
-  padding: 12px 7px;
+  padding: 12px 3px;
   text-align: center;
 `;
 
 const StyledHeader = styled.header`
-  margin-left: 5.5rem;
-  margin-top: 4.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  margin-top: 3rem;
+  display: flex;
 `;
 
 const HeaderSection = styled.div`
@@ -62,6 +64,13 @@ const DropDown = styled.div`
   background-color: white;
 `;
 
+const HeaderImg = styled.img`
+  width: 10%;
+  height: 10%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+`;
+
 export {
   StyledHeader,
   HeaderLink,
@@ -69,4 +78,5 @@ export {
   HeaderListItem,
   HeaderSection,
   DropDown,
+  HeaderImg,
 };
