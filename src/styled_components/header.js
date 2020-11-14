@@ -34,7 +34,7 @@ const HeaderListItem = styled.li`
 const StyledHeader = styled.header`
   margin-left: 3rem;
   margin-right: 3rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
 `;
 

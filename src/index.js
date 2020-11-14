@@ -2,14 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./index.css";
-import "./styled_components/header";
 import reportWebVitals from "./reportWebVitals";
 import Header from "./components/Header";
+import Title from "./components/Title";
 
 ReactDOM.render(
   <React.StrictMode>
     {" "}
     <Header />
+    <Title />
   </React.StrictMode>,
   document.getElementById("root")
 );
