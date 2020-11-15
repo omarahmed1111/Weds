@@ -4,7 +4,7 @@ const MainWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-
+  flex-wrap: wrap;
   margin-left: 3rem;
   margin-top: 2rem;
 `;
@@ -99,6 +99,27 @@ const PhotosCardTitle = styled.h3`
   -webkit-box-orient: vertical;
 `;
 
+const PaginationContainer = styled.div`
+  display: block;
+  text-align: center;
+`;
+
+const PaginationList = styled.ul`
+  display: flex;
+
+  border-radius: 4px;
+  width: 70%;
+`;
+const PaginationListItem = styled.li`
+  list-style-type: none;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  border-style: solid;
+  width: 3rem;
+`;
 export {
   MainWrapper,
   FilterContainer,
@@ -110,4 +131,7 @@ export {
   PhotosCard,
   PhotosCardImg,
   PhotosCardTitle,
+  PaginationContainer,
+  PaginationList,
+  PaginationListItem,
 };

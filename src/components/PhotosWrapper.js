@@ -12,6 +12,9 @@ import {
   PhotosCard,
   PhotosCardImg,
   PhotosCardTitle,
+  PaginationContainer,
+  PaginationList,
+  PaginationListItem,
 } from "../styled_components/photosWrapper";
 
 export default function PhotosWrapper(props) {
@@ -39,6 +42,12 @@ export default function PhotosWrapper(props) {
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
 
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(cards.length / cardsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <MainWrapper>
       <FilterContainer>
@@ -58,6 +67,17 @@ export default function PhotosWrapper(props) {
           </PhotosCard>
         ))}
       </PhotosContainer>
+      <PaginationContainer>
+        <PaginationList>
+          {pageNumbers.map((number) => (
+            <PaginationListItem key={number}>
+              <a onClick={() => setCurrentPage(number)} href="!#">
+                {number}
+              </a>
+            </PaginationListItem>
+          ))}
+        </PaginationList>
+      </PaginationContainer>
     </MainWrapper>
   );
 }
