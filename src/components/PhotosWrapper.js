@@ -17,6 +17,8 @@ import {
   PaginationListItem,
 } from "../styled_components/photosWrapper";
 
+let cardsCopy = []; // to save the original cards before filtering.
+
 export default function PhotosWrapper(props) {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,6 +34,7 @@ export default function PhotosWrapper(props) {
     };
 
     fetchCards();
+    cardsCopy = [...cards];
   }, []);
 
   if (loading) {
@@ -48,13 +51,44 @@ export default function PhotosWrapper(props) {
     pageNumbers.push(i);
   }
 
+  const search = (keyword) => {
+    if (keyword === "") {
+      return cardsCopy;
+    }
+    let filteredCards = [];
+    for (let i = 0; i < cards.length; i++) {
+      if (cards[i].title.includes(keyword)) {
+        filteredCards.push(cards[i]);
+      }
+    }
+    return filteredCards;
+  };
+
   return (
     <MainWrapper>
       <FilterContainer>
         <FilterForm>
           <FilterActions>
-            <FilterButton white>Clear</FilterButton>
-            <FilterButton>Apply</FilterButton>
+            <FilterButton
+              white
+              onClick={(e) => {
+                e.preventDefault();
+                setCards(search(""));
+              }}
+            >
+              Clear
+            </FilterButton>
+            <FilterButton
+              onClick={(e) => {
+                e.preventDefault();
+
+                const keyword =
+                  e.target.parentNode.parentNode.parentNode.lastChild.value;
+                setCards(search(keyword));
+              }}
+            >
+              Apply
+            </FilterButton>
           </FilterActions>
         </FilterForm>
         <FilterSearchInput placeholder="Search" />
@@ -71,9 +105,7 @@ export default function PhotosWrapper(props) {
         <PaginationList>
           {pageNumbers.map((number) => (
             <PaginationListItem key={number}>
-              <a onClick={() => setCurrentPage(number)} href="!#">
-                {number}
-              </a>
+              <button onClick={() => setCurrentPage(number)}>{number}</button>
             </PaginationListItem>
           ))}
         </PaginationList>
