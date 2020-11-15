@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Category from "./components/Category";
 import Footer from "./components/Footer";
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/categories/:category_id" component={Home} />
+        <Route path="/categories" component={Category} />
       </Switch>
       <Footer />
     </Router>
