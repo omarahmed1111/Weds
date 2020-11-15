@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import {
   CategoriesWrapper,
@@ -20,9 +21,13 @@ export default function Category(props) {
 
   return (
     <CategoriesWrapper>
-      <CategoriesItem>aaaaaaaa</CategoriesItem>
-      <CategoriesItem>aaaaaaaa</CategoriesItem>
-      <CategoriesItem>aaaaaaaa</CategoriesItem>
+      {categories.map((category) => {
+        return (
+          <CategoriesItem key={category.id}>
+            <Link to={`/categories/${category.id}`}>{category.title}</Link>
+          </CategoriesItem>
+        );
+      })}
     </CategoriesWrapper>
   );
 }
