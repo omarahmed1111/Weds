@@ -25,16 +25,20 @@ export default function PhotosWrapper(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(6);
 
-  useEffect(() => {
-    const fetchCards = async () => {
-      setLoading(true);
-      const res = await axios.get("http://localhost:3000/wedding_ideas");
-      setCards(res.data.data);
-      setLoading(false);
-    };
+  const fetchCards = async () => {
+    setLoading(true);
+    const res = await axios.get(
+      `http://localhost:3000/categories/${
+        props.category_id ? props.category_id : 1
+      }`
+    );
+    setCards(res.data.data);
+    setLoading(false);
+    cardsCopy = [...res.data.data];
+  };
 
+  useEffect(() => {
     fetchCards();
-    cardsCopy = [...cards];
   }, []);
 
   if (loading) {
@@ -69,16 +73,12 @@ export default function PhotosWrapper(props) {
       <FilterContainer>
         <FilterForm>
           <FilterActions>
-            <FilterButton
-              white
-              onClick={(e) => {
-                e.preventDefault();
-                setCards(search(""));
-              }}
-            >
+            <FilterButton bgcolor="white" color="black" onClick={(e) => {}}>
               Clear
             </FilterButton>
             <FilterButton
+              bgcolor="black"
+              color="white"
               onClick={(e) => {
                 e.preventDefault();
 

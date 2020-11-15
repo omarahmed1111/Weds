@@ -10,7 +10,7 @@ export default function Title(props) {
     <StyledTitle>
       <TitleHeading>Gallery</TitleHeading>
       <TitleIcon className="fa fa-angle-right"></TitleIcon>
-      <TitleHeading>WEDDING IDEAS</TitleHeading>
+      <TitleHeading>{props.title}</TitleHeading>
     </StyledTitle>
   );
 }

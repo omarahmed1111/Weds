@@ -1,20 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
+
 import Header from "./components/Header";
-import Title from "./components/Title";
-import PhotosWrapper from "./components/PhotosWrapper";
+import Home from "./components/Home";
 import Footer from "./components/Footer";
 
 ReactDOM.render(
   <React.StrictMode>
     {" "}
-    <Header />
-    <Title />
-    <PhotosWrapper />
-    <Footer />
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/categories/:category_id" component={Home} />
+      </Switch>
+      <Footer />
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
