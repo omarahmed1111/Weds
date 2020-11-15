@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import {
   FilterContainer,
   MainWrapper,
@@ -13,6 +15,30 @@ import {
 } from "../styled_components/photosWrapper";
 
 export default function PhotosWrapper(props) {
+  const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage, setCardsPerPage] = useState(6);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      setLoading(true);
+      const res = await axios.get("http://localhost:3000/wedding_ideas");
+      setCards(res.data.data);
+      setLoading(false);
+    };
+
+    fetchCards();
+  }, []);
+
+  if (loading) {
+    return <h1>Loading....</h1>;
+  }
+
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+
   return (
     <MainWrapper>
       <FilterContainer>
@@ -25,22 +51,12 @@ export default function PhotosWrapper(props) {
         <FilterSearchInput placeholder="Search" />
       </FilterContainer>
       <PhotosContainer>
-        <PhotosCard>
-          <PhotosCardImg src="https://weds360.com/assets/logo-230bd37b1825e38607ce1c61b6d90db4b882249ec903fba33728119249a9036f.png"></PhotosCardImg>
-          <PhotosCardTitle>Irresistible appetizers’ corner</PhotosCardTitle>
-        </PhotosCard>
-        <PhotosCard>
-          <PhotosCardImg src="https://weds360.com/assets/logo-230bd37b1825e38607ce1c61b6d90db4b882249ec903fba33728119249a9036f.png"></PhotosCardImg>
-          <PhotosCardTitle>Irresistible appetizers’ corner</PhotosCardTitle>
-        </PhotosCard>
-        <PhotosCard>
-          <PhotosCardImg src="https://weds360.com/assets/logo-230bd37b1825e38607ce1c61b6d90db4b882249ec903fba33728119249a9036f.png"></PhotosCardImg>
-          <PhotosCardTitle>Irresistible appetizers’ corner</PhotosCardTitle>
-        </PhotosCard>
-        <PhotosCard>
-          <PhotosCardImg src="https://weds360.com/assets/logo-230bd37b1825e38607ce1c61b6d90db4b882249ec903fba33728119249a9036f.png"></PhotosCardImg>
-          <PhotosCardTitle>Irresistible appetizers’ corner</PhotosCardTitle>
-        </PhotosCard>
+        {currentCards.map((card) => (
+          <PhotosCard key={card.id}>
+            <PhotosCardImg src={card.photo}></PhotosCardImg>
+            <PhotosCardTitle>{card.title}</PhotosCardTitle>
+          </PhotosCard>
+        ))}
       </PhotosContainer>
     </MainWrapper>
   );
