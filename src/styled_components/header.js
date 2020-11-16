@@ -13,6 +13,22 @@ const HeaderLink = styled.a`
   text-decoration: none;
   color: #000;
 `;
+const HeaderNavLink = styled.a`
+  text-transform: uppercase;
+  font-family: "Lato", sans-serif;
+  font-size: 13.4px;
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  text-decoration: none;
+  color: #000;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.1rem;
+`;
 
 const HeaderList = styled.ul`
   padding: 0;
@@ -55,6 +71,7 @@ const DropDown = styled.div`
   text-align: center;
   box-sizing: border-box;
   display: none;
+  flex-direction: column;
   min-width: 100% !important;
   top: 44px;
   left: 0;
@@ -79,4 +96,5 @@ export {
   HeaderSection,
   DropDown,
   HeaderImg,
+  HeaderNavLink,
 };

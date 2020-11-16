@@ -7,22 +7,48 @@ import {
   DropDown,
   StyledHeader,
   HeaderImg,
+  HeaderNavLink,
 } from "../styled_components/header";
 
 export default function Header(props) {
+  const displayNav = (show, nav) => {
+    if (show) {
+      nav.style.display = "flex";
+    } else {
+      nav.style.display = "none";
+    }
+  };
+
   return (
     <StyledHeader>
       <HeaderSection>
         <HeaderList>
           <HeaderListItem>
-            <HeaderLink>360 Planner</HeaderLink>
-            <DropDown>
-              <HeaderLink>Check list</HeaderLink>
-              <HeaderLink>Budgeter</HeaderLink>
-              <HeaderLink>Registry list</HeaderLink>
-              <HeaderLink>Wedding Website</HeaderLink>
-              <HeaderLink>Couple Website</HeaderLink>
-              <HeaderLink>More</HeaderLink>
+            <HeaderLink
+              onMouseEnter={(e) => {
+                const nav = e.target.parentNode.lastChild;
+                displayNav(true, nav);
+              }}
+            >
+              360 Planner
+            </HeaderLink>
+            <DropDown
+              onMouseLeave={(e) => {
+                const nav = e.target.parentNode;
+
+                if (nav.childElementCount === 6) displayNav(false, nav);
+
+                const navAlternative = e.target;
+                if (navAlternative.childElementCount === 6)
+                  displayNav(false, navAlternative);
+              }}
+            >
+              <HeaderNavLink>Check list</HeaderNavLink>
+              <HeaderNavLink>Budgeter</HeaderNavLink>
+              <HeaderNavLink>Registry list</HeaderNavLink>
+              <HeaderNavLink>Wedding Website</HeaderNavLink>
+              <HeaderNavLink>Couple Website</HeaderNavLink>
+              <HeaderNavLink>More</HeaderNavLink>
             </DropDown>
           </HeaderListItem>
           <HeaderListItem>
