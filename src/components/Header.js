@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   HeaderLink,
   HeaderList,
@@ -7,6 +9,7 @@ import {
   DropDown,
   StyledHeader,
   HeaderImg,
+  HeaderImgDiv,
   HeaderNavLink,
 } from "../styled_components/header";
 
@@ -62,11 +65,14 @@ export default function Header(props) {
           </HeaderListItem>
         </HeaderList>
       </HeaderSection>
-
-      <HeaderImg
-        src="https://weds360.com/assets/logo-230bd37b1825e38607ce1c61b6d90db4b882249ec903fba33728119249a9036f.png"
-        alt="Logo"
-      ></HeaderImg>
+      <HeaderImgDiv>
+        <Link to="/">
+          <HeaderImg
+            src="https://weds360.com/assets/logo-230bd37b1825e38607ce1c61b6d90db4b882249ec903fba33728119249a9036f.png"
+            alt="Logo"
+          />
+        </Link>
+      </HeaderImgDiv>
 
       <HeaderSection>
         <HeaderList>

@@ -82,11 +82,19 @@ const DropDown = styled.div`
   background-color: white;
 `;
 
-const HeaderImg = styled.img`
-  width: 10%;
-  height: 10%;
+const HeaderImgDiv = styled.div`
   margin-left: 1rem;
   margin-right: 1rem;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const HeaderImg = styled.img`
+  width: 70%;
+  height: 70%;
+  margin-left: 1rem;
 `;
 
 export {
@@ -96,6 +104,7 @@ export {
   HeaderListItem,
   HeaderSection,
   DropDown,
+  HeaderImgDiv,
   HeaderImg,
   HeaderNavLink,
 };
