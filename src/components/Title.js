@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import {
   StyledTitle,
@@ -25,7 +26,9 @@ export default function Title(props) {
 
   return (
     <StyledTitle>
-      <TitleHeading>Gallery</TitleHeading>
+      <TitleHeading>
+        <Link to="/categories">Gallery</Link>
+      </TitleHeading>
       <TitleIcon className="fa fa-angle-right"></TitleIcon>
       <TitleHeading>{title}</TitleHeading>
     </StyledTitle>
