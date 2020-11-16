@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
+import { updateCategories } from "../actions";
 import {
   CategoriesWrapper,
   CategoriesItem,
 } from "../styled_components/category";
 
 export default function Category(props) {
-  const [categories, setCategories] = useState([]);
+  const categories = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
 
   const fetchCategories = async () => {
     const res = await axios.get(`http://localhost:3000/categories`);
-    setCategories(res.data);
+    dispatch(updateCategories(res.data));
   };
 
   useEffect(() => {
