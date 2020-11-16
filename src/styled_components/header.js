@@ -28,6 +28,7 @@ const HeaderNavLink = styled.a`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   padding: 0.1rem;
+  border-bottom-style: solid;
 `;
 
 const HeaderList = styled.ul`
