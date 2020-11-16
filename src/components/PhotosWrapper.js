@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  updateCards,
+  updateLoading,
+  updateCardsPerPage,
+  updateCurrentPage,
+} from "../actions";
 
 import {
   FilterContainer,
@@ -20,20 +28,22 @@ import {
 let cardsCopy = []; // to save the original cards before filtering.
 
 export default function PhotosWrapper(props) {
-  const [cards, setCards] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage, setCardsPerPage] = useState(6);
+  const dispatch = useDispatch();
+
+  const cards = useSelector((state) => state.cards);
+  const loading = useSelector((state) => state.loading);
+  const currentPage = useSelector((state) => state.currentPage);
+  const cardsPerPage = useSelector((state) => state.cardsPerPage);
 
   const fetchCards = async () => {
-    setLoading(true);
+    dispatch(updateLoading(true));
     const res = await axios.get(
       `http://localhost:3000/categories/${
         props.category_id ? props.category_id : 1
       }`
     );
-    setCards(res.data.data);
-    setLoading(false);
+    dispatch(updateCards(res.data.data));
+    dispatch(updateLoading(false));
     cardsCopy = [...res.data.data];
   };
 
@@ -84,7 +94,7 @@ export default function PhotosWrapper(props) {
 
                 const keyword =
                   e.target.parentNode.parentNode.parentNode.lastChild.value;
-                setCards(search(keyword));
+                dispatch(updateCards(search(keyword)));
               }}
             >
               Apply
@@ -105,7 +115,9 @@ export default function PhotosWrapper(props) {
         <PaginationList>
           {pageNumbers.map((number) => (
             <PaginationListItem key={number}>
-              <button onClick={() => setCurrentPage(number)}>{number}</button>
+              <button onClick={() => dispatch(updateCurrentPage(number))}>
+                {number}
+              </button>
             </PaginationListItem>
           ))}
         </PaginationList>
